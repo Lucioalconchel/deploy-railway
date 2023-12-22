@@ -90,5 +90,7 @@ app.post('/nuevaCategoria', async(req,res)=>{
 })
 app.get('/categorias', async(req,res)=>{
     const categorias = await prisma.categoria.findMany();
-    res.json(categorias);
+    res.render('show',{
+        categorias:categorias
+    })
 })

@@ -182,7 +182,9 @@ app.get('/categorias', function _callee6(req, res) {
 
         case 2:
           categorias = _context6.sent;
-          res.json(categorias);
+          res.render('show', {
+            categorias: categorias
+          });
 
         case 4:
         case "end":
