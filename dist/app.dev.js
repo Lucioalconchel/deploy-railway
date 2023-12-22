@@ -75,7 +75,9 @@ app.get('/usuarios', function _callee2(req, res) {
 
         case 2:
           usuarios = _context2.sent;
-          res.send(usuarios);
+          res.render('usuarios', {
+            usuarios: usuarios
+          });
 
         case 4:
         case "end":
@@ -134,7 +136,9 @@ app.get('/productos', function _callee4(req, res) {
 
         case 2:
           productos = _context4.sent;
-          res.send(productos);
+          res.render('productos', {
+            productos: productos
+          });
 
         case 4:
         case "end":
@@ -182,7 +186,7 @@ app.get('/categorias', function _callee6(req, res) {
 
         case 2:
           categorias = _context6.sent;
-          res.render('show', {
+          res.render('categorias', {
             categorias: categorias
           });
 

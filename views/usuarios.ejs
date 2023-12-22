@@ -15,11 +15,11 @@
     <a href="#" id="Categorias">Categorias</a>
 </navbar>
 <body>
-    <% for (var i = 0; i < categorias.length ; i++) { %>
+    <% for (var i = 0; i < usuarios.length ; i++) { %>
         <ul>
-            <li>
-                <%= categorias[i].id %>|| <%= categorias[i].categoria %>
-            </li>
+            <ol>
+                <%=(i+1)%>° <%= usuarios[i].nombre %>  <%= usuarios[i].apellido %>
+            </ol>
         </ul>
         <% } %>
 </body>

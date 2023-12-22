@@ -43,7 +43,9 @@ app.post('/nuevoUsuario',async (req,res)=>{
 })
 app.get('/usuarios', async(req,res)=>{
     const usuarios = await prisma.usuario.findMany();
-    res.send(usuarios);
+    res.render('usuarios',{
+        usuarios:usuarios
+    })
 })
 //=========================================================
 app.get('/nuevoProducto',(req,res)=>{
@@ -73,7 +75,9 @@ app.post('/nuevoProducto', async (req,res)=>{
 })
 app.get('/productos', async(req,res)=>{
     const productos = await prisma.producto.findMany()
-    res.send(productos)
+    res.render('productos',{
+        productos:productos
+    })
 })
 //==========================================================
 app.get('/nuevaCategoria', (req,res)=>{
@@ -90,7 +94,7 @@ app.post('/nuevaCategoria', async(req,res)=>{
 })
 app.get('/categorias', async(req,res)=>{
     const categorias = await prisma.categoria.findMany();
-    res.render('show',{
+    res.render('categorias',{
         categorias:categorias
     })
 })
