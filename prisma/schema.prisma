@@ -19,7 +19,7 @@ model usuario {
 
 model categoria {
   id_categoria Int        @id @default(autoincrement())
-  categoria    String
+  categoria    String //podria ser @unique (asi no se repite por mal tipeo)
   producto     producto[]
 }
 

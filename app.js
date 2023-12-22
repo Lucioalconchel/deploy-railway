@@ -20,6 +20,9 @@ app.use(express.static('./src'));
 app.listen(PORT,()=>{
     console.log(`Escuchando en el puerto ${PORT}`);
 })
+app.get('/', (req,res)=>{
+    res.render('home');
+})
 //=========================================================
 app.get('/nuevoUsuario',(req,res)=>{
     //res.send("Esta como loquita")
@@ -56,7 +59,7 @@ app.post('/nuevoProducto', async (req,res)=>{
     categoria = parseInt(categoria)
     precio=parseFloat(precio);
     stock=parseInt(stock);
-    
+
     await prisma.producto.create({
         data:{
             id_categoria : categoria,
@@ -71,4 +74,21 @@ app.post('/nuevoProducto', async (req,res)=>{
 app.get('/productos', async(req,res)=>{
     const productos = await prisma.producto.findMany()
     res.send(productos)
+})
+//==========================================================
+app.get('/nuevaCategoria', (req,res)=>{
+    res.render('nuevaCategoria')
+})
+app.post('/nuevaCategoria', async(req,res)=>{
+    const {categoria} = req.body
+    await prisma.categoria.create({
+        data:{
+            categoria : categoria
+        }
+    })
+    res.redirect('/nuevaCategoria')
+})
+app.get('/categorias', async(req,res)=>{
+    const categorias = await prisma.categoria.findMany();
+    res.json(categorias);
 })

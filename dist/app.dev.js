@@ -27,6 +27,9 @@ app.use(_express["default"]["static"]('./src')); //=============================
 
 app.listen(PORT, function () {
   console.log("Escuchando en el puerto ".concat(PORT));
+});
+app.get('/', function (req, res) {
+  res.render('home');
 }); //=========================================================
 
 app.get('/nuevoUsuario', function (req, res) {
@@ -136,6 +139,54 @@ app.get('/productos', function _callee4(req, res) {
         case 4:
         case "end":
           return _context4.stop();
+      }
+    }
+  });
+}); //==========================================================
+
+app.get('/nuevaCategoria', function (req, res) {
+  res.render('nuevaCategoria');
+});
+app.post('/nuevaCategoria', function _callee5(req, res) {
+  var categoria;
+  return regeneratorRuntime.async(function _callee5$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          categoria = req.body.categoria;
+          _context5.next = 3;
+          return regeneratorRuntime.awrap(prisma.categoria.create({
+            data: {
+              categoria: categoria
+            }
+          }));
+
+        case 3:
+          res.redirect('/nuevaCategoria');
+
+        case 4:
+        case "end":
+          return _context5.stop();
+      }
+    }
+  });
+});
+app.get('/categorias', function _callee6(req, res) {
+  var categorias;
+  return regeneratorRuntime.async(function _callee6$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return regeneratorRuntime.awrap(prisma.categoria.findMany());
+
+        case 2:
+          categorias = _context6.sent;
+          res.json(categorias);
+
+        case 4:
+        case "end":
+          return _context6.stop();
       }
     }
   });
