@@ -18,9 +18,34 @@ app.listen(PORT, function () {
 app.get('/', function (req, res) {
   res.send("hola usuario");
 });
-app.post('/inicio', function (req, res) {
-  var username = req.body.username;
-  res.send({
-    msg: "Bienvenido ".concat(username)
+/*
+app.post('/inicio', (req,res)=>{
+    const {username} = req.body;
+    res.send({msg: `Bienvenido ${username}`});
+})
+*/
+
+app.get('/usuario', function _callee(req, res) {
+  var usuario;
+  return regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return regeneratorRuntime.awrap(Prisma.usuario.create({
+            data: {
+              nombre: "Lucio"
+            }
+          }));
+
+        case 2:
+          usuario = _context.sent;
+          res.json(usuario);
+
+        case 4:
+        case "end":
+          return _context.stop();
+      }
+    }
   });
 });

@@ -13,10 +13,19 @@ app.listen(PORT,()=>{
 
 app.get('/', (req,res)=>{
     res.send("hola usuario")
-})
 
+})
+/*
 app.post('/inicio', (req,res)=>{
     const {username} = req.body;
     res.send({msg: `Bienvenido ${username}`});
 })
-
+*/
+app.get('/usuario', async(req,res)=>{
+    const usuario = await Prisma.usuario.create({
+        data:{
+            nombre: "Lucio"
+        }
+    });
+    res.json(usuario);
+})
