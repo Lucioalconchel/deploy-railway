@@ -11,6 +11,25 @@ datasource db {
 }
 
 model usuario {
-  id     Int    @id @default(autoincrement())
-  nombre String
+  id       Int    @id @default(autoincrement())
+  nombre   String
+  apellido String
+  email    String @unique
+}
+
+model categoria {
+  id_categoria Int        @id @default(autoincrement())
+  categoria    String
+  producto     producto[]
+}
+
+model producto {
+  id           Int       @id @default(autoincrement())
+  id_categoria Int
+  marca        String
+  descripcion  String
+  precio       Float
+  stock        Int
+  foto         String    @default("Foto producto")
+  categoria    categoria @relation(fields: [id_categoria], references: [id_categoria])
 }

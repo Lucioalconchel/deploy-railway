@@ -1,36 +1,74 @@
 import express from "express";
 import bodyParser from "body-parser";
 import {PrismaClient} from '@prisma/client';
-
+import e from "express";
+//=========================================================
 const prisma = new PrismaClient();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+//=========================================================
 app.use(bodyParser.urlencoded({extends:true}));
 app.use(bodyParser.json());
-
+//=========================================================
+app.set('views','./views');
+app.set('view engine', 'ejs');
+//=========================================================
+app.use(express.static('./views'));
+app.use(express.static('./css'));
+app.use(express.static('./src'));
+//=========================================================
 app.listen(PORT,()=>{
     console.log(`Escuchando en el puerto ${PORT}`);
 })
-
-app.get('/', (req,res)=>{
-    res.send("hola usuario")
-
+//=========================================================
+app.get('/nuevoUsuario',(req,res)=>{
+    //res.send("Esta como loquita")
+    res.render('nuevoUsuario')
 })
-app.get('/nuevo', async (req,res)=>{
-    newUser();
-    res.redirect('/')
-});
-app.get('/usuario', async(req,res)=>{
-    const usuarios = await prisma.usuario.findMany();
-    res.json(usuarios)
-})
-async function newUser(){
-    const user = await prisma.usuario.create({
+app.post('/nuevoUsuario',async (req,res)=>{
+    const {nombre} = req.body;
+    const {apellido} = req.body;
+    const {email} = req.body;
+    await prisma.usuario.create({
         data:{
-            nombre : "lucio"
+            nombre : nombre,
+            apellido : apellido,
+            email: email
         }
     })
-    return user;
-}
+    res.redirect('/usuarios')
+})
+app.get('/usuarios', async(req,res)=>{
+    const usuarios = await prisma.usuario.findMany();
+    res.send(usuarios);
+})
+//=========================================================
+app.get('/nuevoProducto',(req,res)=>{
+    res.render('nuevoProducto')
+})
+app.post('/nuevoProducto', async (req,res)=>{
+    let {categoria} = req.body;
+    let {marca} = req.body;
+    let {descripcion} = req.body;
+    let {precio} = req.body;
+    let {stock} = req.body;
+
+    categoria = parseInt(categoria)
+    precio=parseFloat(precio);
+    stock=parseInt(stock);
+    
+    await prisma.producto.create({
+        data:{
+            id_categoria : categoria,
+            marca: marca,
+            descripcion : descripcion,
+            precio: precio,
+            stock : stock
+        }
+    })
+    res.redirect('/productos')
+})
+app.get('/productos', async(req,res)=>{
+    const productos = await prisma.producto.findMany()
+    res.send(productos)
+})

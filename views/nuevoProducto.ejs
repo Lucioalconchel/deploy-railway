@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<navbar>
+
+</navbar>
+<body>
+   <form action='/nuevoProducto' method="POST">
+            <label for="">Categoria</label>
+            <!--Esta etiqueta se deberia hacer con un for/forEach/map, porque te paso el arrayList y se itera para poder hacer esto-->
+            <select name="categoria" > 
+                <option value="1">Accesorio</option>
+                <option value="2">Aluminio</option>
+                <option value="3">Base</option>
+                <option value="4">Cabezal-Rosh</option>
+                <option value="5">Carbon</option>
+                <option value="6">Gestor de calor</option>
+                <option value="7">Manguera</option>
+                <option value="8">Narguile</option>
+                <option value="9">Pinza</option>
+                <option value="10">Punzon</option>
+                <option value="11">Plato</option>
+                <option value="12">Tabaco</option>
+            </select>
+            <input type="text" name="marca" placeholder="marca" >
+            <input type="text" name="descripcion" placeholder="descripcion">
+            <input type="number" name="precio" placeholder="precio en pesos">
+            <input type="number" name="stock" placeholder="stock">
+       <input type="submit" value="Enviar">
+        
+   </form>
+</body>
+<script src="funcion.js"></script>
+<footer>
+
+</footer>
+</html>
