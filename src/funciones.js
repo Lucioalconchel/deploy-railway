@@ -31,3 +31,28 @@ productos.addEventListener('click',()=>{
 categorias.addEventListener('click',()=>{
     window.location.href='/categorias';
 })
+
+//====================================================
+const btnBorrarUsuario = document.getElementsByClassName('borrarUsuario')
+const btnBorrarProducto = document.getElementsByClassName('borrarProducto')
+const btnBorrarCategoria = document.getElementsByClassName('borrarCategoria')
+
+for(let elemento of btnBorrarUsuario){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/borrarUsuario/${id}`;
+    })
+}
+for(let elemento of btnBorrarProducto){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/borrarProducto/${id}`;
+    })
+}
+for(let elemento of btnBorrarCategoria){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/borrarCategoria/${id}`;
+    })
+}
+

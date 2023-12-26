@@ -17,20 +17,10 @@
 <body>
    <form action='/nuevoProducto' method="POST">
             <label for="">Categoria</label>
-            <!--Esta etiqueta se deberia hacer con un for/forEach/map, porque te paso el arrayList y se itera para poder hacer esto-->
-            <select name="categoria" > 
-                <option value="1">Accesorio</option>
-                <option value="2">Aluminio</option>
-                <option value="3">Base</option>
-                <option value="4">Cabezal-Rosh</option>
-                <option value="5">Carbon</option>
-                <option value="6">Gestor de calor</option>
-                <option value="7">Manguera</option>
-                <option value="8">Narguile</option>
-                <option value="9">Pinza</option>
-                <option value="10">Punzon</option>
-                <option value="11">Plato</option>
-                <option value="12">Tabaco</option>
+            <select name="categoria">
+                <% for (var i =0; i<categorias.length; i++ ) { %>
+                <option value= <%= categorias[i].id_categoria %> > <%= categorias[i].categoria%> </option>
+                <% }%>
             </select>
             <input type="text" name="marca" placeholder="marca" >
             <input type="text" name="descripcion" placeholder="descripcion">

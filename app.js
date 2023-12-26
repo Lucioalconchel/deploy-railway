@@ -47,9 +47,23 @@ app.get('/usuarios', async(req,res)=>{
         usuarios:usuarios
     })
 })
+app.get('/borrarUsuario/:id', async(req,res)=>{
+    let id = req.params.id;
+    id = parseInt(id);
+    await prisma.usuario.delete({
+        where:{
+            id : id
+        }
+    })
+    
+    res.redirect('/usuarios')
+})
 //=========================================================
-app.get('/nuevoProducto',(req,res)=>{
-    res.render('nuevoProducto')
+app.get('/nuevoProducto', async(req,res)=>{
+    const categorias = await prisma.categoria.findMany();
+    res.render('nuevoProducto',{
+        categorias:categorias
+    })
 })
 app.post('/nuevoProducto', async (req,res)=>{
     let {categoria} = req.body;
@@ -79,6 +93,16 @@ app.get('/productos', async(req,res)=>{
         productos:productos
     })
 })
+app.get('/borrarProducto/:id', async(req,res)=>{
+    let id = req.params.id;
+    id = parseInt(id);
+    await prisma.producto.delete({
+        where:{
+            id: id
+        }
+    })
+    res.redirect('/productos')
+})
 //==========================================================
 app.get('/nuevaCategoria', (req,res)=>{
     res.render('nuevaCategoria')
@@ -90,7 +114,7 @@ app.post('/nuevaCategoria', async(req,res)=>{
             categoria : categoria
         }
     })
-    res.redirect('/nuevaCategoria')
+    res.redirect('/categorias')
 })
 app.get('/categorias', async(req,res)=>{
     const categorias = await prisma.categoria.findMany();
@@ -98,3 +122,14 @@ app.get('/categorias', async(req,res)=>{
         categorias:categorias
     })
 })
+app.get('/borrarCategoria/:id', async(req,res)=>{
+    let id = req.params.id;
+    id = parseInt(id);
+    await prisma.categoria.delete({
+        where:{
+            id_categoria : id
+        }
+    })
+    res.redirect('/categorias')
+})
+//==========================================================

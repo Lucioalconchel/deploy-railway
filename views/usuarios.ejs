@@ -19,6 +19,7 @@
         <ul>
             <ol>
                 <%=(i+1)%>° <%= usuarios[i].nombre %>  <%= usuarios[i].apellido %>
+                <button class="borrarUsuario" id=<%= usuarios[i].id %> >Eliminar</button>
             </ol>
         </ul>
         <% } %>
