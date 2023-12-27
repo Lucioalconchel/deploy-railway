@@ -11,10 +11,28 @@ datasource db {
 }
 
 model usuario {
-  id       Int    @id @default(autoincrement())
-  nombre   String
-  apellido String
-  email    String @unique
+  id_usuario Int          @id @default(autoincrement())
+  nombre     String
+  apellido   String
+  email      String       @unique
+  comentario comentario[]
+}
+
+model comentario {
+  id_comentario Int           @id @default(autoincrement())
+  id_usuario    Int
+  descripcion   String
+  usuario       usuario       @relation(fields: [id_usuario], references: [id_usuario])
+  publicacion   publicacion[]
+}
+
+model publicacion {
+  id_publicacion Int        @id @default(autoincrement())
+  titulo         String
+  descripcion    String
+  foto           String?
+  id_comentario  Int
+  comentario     comentario @relation(fields: [id_comentario], references: [id_comentario])
 }
 
 model categoria {
@@ -24,7 +42,7 @@ model categoria {
 }
 
 model producto {
-  id           Int       @id @default(autoincrement())
+  id_producto  Int       @id @default(autoincrement())
   id_categoria Int
   marca        String
   descripcion  String
@@ -32,4 +50,13 @@ model producto {
   stock        Int
   foto         String    @default("Foto producto")
   categoria    categoria @relation(fields: [id_categoria], references: [id_categoria])
+}
+
+model compra {
+  id_item      Int @id @default(autoincrement()) //esto es porque la db me obliga a tener un Id
+  orden_compra Int //podria ser string si se quisiera
+  id_usuario   Int
+  id_producto  Int
+  stock        Int
+  //precio
 }

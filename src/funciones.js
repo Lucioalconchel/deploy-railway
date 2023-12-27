@@ -56,3 +56,5 @@ for(let elemento of btnBorrarCategoria){
     })
 }
 
+//====================================================
+

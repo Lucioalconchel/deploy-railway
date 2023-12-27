@@ -12,14 +12,15 @@
     <a href="#" id="NuevoProducto">Nuevo Producto || </a>
     <a href="#" id="Productos">Productos || </a>
     <a href="#" id="NuevaCategoria">Nueva categoria || </a>
-    <a href="#" id="Categorias">Categorias</a>
+    <a href="#" id="Categorias">Categorias</a> <br>
 </navbar>
 <body>
+    <h1>Usuarios</h1>
     <% for (var i = 0; i < usuarios.length ; i++) { %>
         <ul>
             <ol>
                 <%=(i+1)%>° <%= usuarios[i].nombre %>  <%= usuarios[i].apellido %>
-                <button class="borrarUsuario" id=<%= usuarios[i].id %> >Eliminar</button>
+                <button class="borrarUsuario" id=<%= usuarios[i].id_usuario %> >Eliminar</button>
             </ol>
         </ul>
         <% } %>

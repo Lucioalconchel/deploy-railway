@@ -12,12 +12,13 @@
     <a href="#" id="NuevoProducto">Nuevo Producto || </a>
     <a href="#" id="Productos">Productos || </a>
     <a href="#" id="NuevaCategoria">Nueva categoria || </a>
-    <a href="#" id="Categorias">Categorias</a>
+    <a href="#" id="Categorias">Categorias</a> <br>
 </navbar>
 <body>
+    <h1>Categorias</h1>
     <% for (var i = 0; i < categorias.length ; i++) { %>
         <ul>
-            <ol>
+            <ol class="categoria">
                 <%=(i+1)%>° <%= categorias[i].categoria %>
                 <button class="borrarCategoria" id=<%= categorias[i].id_categoria %> >Eliminar</button>
             </ol>

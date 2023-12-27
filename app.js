@@ -1,13 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import {PrismaClient} from '@prisma/client';
-import e from "express";
 //=========================================================
 const prisma = new PrismaClient();
 const app = express();
 const PORT = process.env.PORT || 3000;
 //=========================================================
-app.use(bodyParser.urlencoded({extends:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 //=========================================================
 app.set('views','./views');
@@ -25,7 +24,6 @@ app.get('/', (req,res)=>{
 })
 //=========================================================
 app.get('/nuevoUsuario',(req,res)=>{
-    //res.send("Esta como loquita")
     res.render('nuevoUsuario')
 })
 app.post('/nuevoUsuario',async (req,res)=>{
@@ -52,7 +50,7 @@ app.get('/borrarUsuario/:id', async(req,res)=>{
     id = parseInt(id);
     await prisma.usuario.delete({
         where:{
-            id : id
+            id_usuario : id
         }
     })
     
@@ -98,7 +96,7 @@ app.get('/borrarProducto/:id', async(req,res)=>{
     id = parseInt(id);
     await prisma.producto.delete({
         where:{
-            id: id
+            id_producto: id
         }
     })
     res.redirect('/productos')

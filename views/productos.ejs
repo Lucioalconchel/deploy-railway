@@ -12,14 +12,15 @@
     <a href="#" id="NuevoProducto">Nuevo Producto || </a>
     <a href="#" id="Productos">Productos || </a>
     <a href="#" id="NuevaCategoria">Nueva categoria || </a>
-    <a href="#" id="Categorias">Categorias</a>
+    <a href="#" id="Categorias">Categorias</a> <br>
 </navbar>
 <body>
+    <h1>Productos</h1>
     <% for (var i = 0; i < productos.length ; i++) { %>
         <ul>
             <ol>
                 <%=(i+1)%>° <%= productos[i].marca %> || <%=productos[i].descripcion%>  || <%=productos[i].precio%>  || <%=productos[i].stock %>
-                <button class="borrarProducto" id=<%= productos[i].id %> >Eliminar</button>
+                <button class="borrarProducto" id=<%= productos[i].id_producto %> >Eliminar</button>
             </ol>
         </ul>
         <% } %>
