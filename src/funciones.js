@@ -57,4 +57,4 @@ for(let elemento of btnBorrarCategoria){
 }
 
 //====================================================
-
+//(aca se define el btn para editar)

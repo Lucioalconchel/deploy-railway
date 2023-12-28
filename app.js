@@ -131,3 +131,16 @@ app.get('/borrarCategoria/:id', async(req,res)=>{
     res.redirect('/categorias')
 })
 //==========================================================
+app.get('/editarUsuario/:id', async(req,res)=>{
+    let email = req.params.id;
+    let usuarios = await prisma.usuario.findMany()
+    let usuario=[];
+    usuarios.forEach(elemento =>{
+        if(elemento.email == email)
+            usuario.push(elemento)
+    })
+    //console.log(usuario);
+    res.render('ss',{
+        usuario:usuario
+    })
+})
