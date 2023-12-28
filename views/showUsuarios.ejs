@@ -21,9 +21,11 @@
             <ol>
                 <%=(i+1)%>° <%= usuarios[i].nombre %>  <%= usuarios[i].apellido %>
                 <button class="borrarUsuario" id=<%= usuarios[i].id_usuario %> >Eliminar</button>
+                <button class="editarUsuario" id=<%= usuarios[i].id_usuario %> >Editar</button>
+
             </ol>
         </ul>
         <% } %>
 </body>
-<script src="funciones.js"></script>
+<script src="../funciones.js"></script>
 </html>

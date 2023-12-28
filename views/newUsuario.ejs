@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<navbar>
+    <a href="#" id="Inicio"> Inicio </a> <br>
+    <a href="#" id="NuevoUsuario">Nuevo Usuario || </a>
+    <a href="#" id="Usuarios">Usuarios || </a>
+    <a href="#" id="NuevoProducto">Nuevo Producto || </a>
+    <a href="#" id="Productos">Productos || </a>
+    <a href="#" id="NuevaCategoria">Nueva categoria || </a>
+    <a href="#" id="Categorias">Categorias</a>
+</navbar>
+<body>
+    <% if (usuario !== null) { %>
+        <h1>Editar Usuario</h1>
+        <form action="/editarUsuario" method="POST">
+            <input type="hidden" name="id_usuario" value= <%= usuario.id_usuario %>>
+            <input type="text" name="nombre" value=<%=usuario.nombre %>>
+            <input type="text" name="apellido" value=<%=usuario.apellido %>>
+            <input type="text" name="email" value=<%=usuario.email %>>
+            <input type="submit" value="Enviar">
+        </form>
+    <% } else { %>
+        <h1>Nuevo Usuario</h1>
+        <form action='/nuevoUsuario' method="POST">
+            <input type="text" name="nombre" placeholder="nombre">
+            <input type="text" name="apellido" placeholder="apellido">
+            <input type="text" name="email" placeholder="email">
+            <input type="submit" value="Enviar">
+        </form>
+   <% } %>
+</body>
+<script src="../funciones.js"></script>
+<footer>
+
+</footer>
+</html>

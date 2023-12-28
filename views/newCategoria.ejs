@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<navbar>
+    <a href="#" id="Inicio"> Inicio </a> <br>
+    <a href="#" id="NuevoUsuario">Nuevo Usuario || </a>
+    <a href="#" id="Usuarios">Usuarios || </a>
+    <a href="#" id="NuevoProducto">Nuevo Producto || </a>
+    <a href="#" id="Productos">Productos || </a>
+    <a href="#" id="NuevaCategoria">Nueva categoria || </a>
+    <a href="#" id="Categorias">Categorias</a>
+</navbar>
+<body>
+    <% if(categoria !== null) { %>
+        <h1>Editar Categoria</h1>
+        <form action="/editarCategoria" method="POST">
+            <input type="hidden" name="id" value=<%= categoria.id_categoria %>>
+            <input type="text" name="categoria" value=<%= categoria.categoria %>>
+            <input type="submit" value="Enviar">
+        </form>
+    <% } else { %>
+        <h1>Nueva Categoria</h1>
+        <form action="/nuevaCategoria" method="POST">
+            <input type="text" name="categoria" placeholder="categoria">
+            <input type="submit" value="Enviar">
+        </form>
+    <% } %>
+</body>
+<script src="../funciones.js"></script>
+</html>

@@ -58,3 +58,26 @@ for(let elemento of btnBorrarCategoria){
 
 //====================================================
 //(aca se define el btn para editar)
+const btnEditarUsuario = document.getElementsByClassName('editarUsuario')
+for(let elemento of btnEditarUsuario){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/editarUsuario/${id}`;
+    })
+}
+
+const btnEditarProducto = document.getElementsByClassName('editarProducto')
+for(let elemento of btnEditarProducto){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/editarProducto/${id}`;
+    })
+}
+
+const btnEditarCategoria = document.getElementsByClassName('editarCategoria')
+for(let elemento of btnEditarCategoria){
+    elemento.addEventListener('click', function(){
+        let id = this.getAttribute('id');
+        window.location.href= `/editarCategoria/${id}`;
+    })
+}

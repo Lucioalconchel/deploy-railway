@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<navbar>
+    <a href="#" id="Inicio"> Inicio </a> <br>
+    <a href="#" id="NuevoUsuario">Nuevo Usuario || </a>
+    <a href="#" id="Usuarios">Usuarios || </a>
+    <a href="#" id="NuevoProducto">Nuevo Producto || </a>
+    <a href="#" id="Productos">Productos || </a>
+    <a href="#" id="NuevaCategoria">Nueva categoria || </a>
+    <a href="#" id="Categorias">Categorias</a>
+</navbar>
+<body>
+    <% if (producto !== null) { %>
+        <h1>Editar Producto</h1>
+
+        <form action='/editarProducto' method="POST">
+            <input type="hidden" name="id_producto" value= <%= producto.id_producto %>>
+            <label for="">Categoria</label>
+            <select name="categoria">
+                <% for (var i =0; i< categorias.length; i++ ) { %>
+                    <option value= <%= categorias[i].id_categoria %> > <%= categorias[i].categoria%> </option>
+                <% }%>
+            </select>
+            <input type="text" name="marca" value=<%= producto.marca %>>
+            <input type="text" name="descripcion" value=<%= producto.descripcion %>>
+            <input type="number" name="precio" value=<%= producto.precio %>>
+            <input type="number" name="stock" value=<%= producto.stock %>>
+            <input type="submit" value="Enviar">
+       </form>
+    <% } else { %>
+        <h1>Nuevo Producto</h1>
+
+        <form action='/nuevoProducto' method="POST">
+            <label for="">Categoria</label>
+            <select name="categoria">
+                <% for (var i =0; i<categorias.length; i++ ) { %>
+                    <option value= <%= categorias[i].id_categoria %> > <%= categorias[i].categoria%> </option>
+                <% }%>
+            </select>
+            <input type="text" name="marca" placeholder="marca" >
+            <input type="text" name="descripcion" placeholder="descripcion">
+            <input type="number" name="precio" placeholder="precio en pesos">
+            <input type="number" name="stock" placeholder="stock">
+            <input type="submit" value="Enviar">
+       </form>
+    <% } %>
+</body>
+<script src="../funciones.js"></script>
+<footer>
+
+</footer>
+</html>

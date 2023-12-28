@@ -15,10 +15,16 @@
     <a href="#" id="Categorias">Categorias</a> <br>
 </navbar>
 <body>
-    <h1>Usuario</h1>
-    <% for(let i=0; i < usuario.length; i++) { %> 
-        <%=usuario[0].id_usuario%>  <%=usuario[0].nombre%>  <%=usuario[0].apellido%>  <%=usuario[0].email%>
-    <% } %>
+    <h1>Categorias</h1>
+    <% for (var i = 0; i < categorias.length ; i++) { %>
+        <ul>
+            <ol class="categoria">
+                <%=(i+1)%>° <%= categorias[i].categoria %>
+                <button class="borrarCategoria" id=<%= categorias[i].id_categoria %> >Eliminar</button>
+                <button class="editarCategoria" id=<%= categorias[i].id_categoria %> >Editar</button>
+            </ol>
+        </ul>
+        <% } %>
 </body>
-<script src="funciones.js"></script>
+<script src="../funciones.js"></script>
 </html>
