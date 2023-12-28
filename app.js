@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import {PrismaClient} from '@prisma/client';
-import categoriaRouter from "../desplegar-node/routes/categoria.js";
-import productoRouter from '../desplegar-node/routes/producto.js'
-import usuarioRouter from '../desplegar-node/routes/usuario.js'
+import categoriaRouter from "./routes/categoria.js";
+import productoRouter from './routes/producto.js'
+import usuarioRouter from './routes/usuario.js'
 //=========================================================
 const prisma = new PrismaClient();
 const app = express();
