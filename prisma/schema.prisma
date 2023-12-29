@@ -16,6 +16,8 @@ model usuario {
   apellido   String
   email      String       @unique
   comentario comentario[]
+  compra     compra[]
+  orden      orden[]
 }
 
 model comentario {
@@ -37,7 +39,7 @@ model publicacion {
 
 model categoria {
   id_categoria Int        @id @default(autoincrement())
-  categoria    String //podria ser @unique (asi no se repite por mal tipeo)
+  categoria    String     @unique
   producto     producto[]
 }
 
@@ -50,13 +52,25 @@ model producto {
   stock        Int
   foto         String    @default("Foto producto")
   categoria    categoria @relation(fields: [id_categoria], references: [id_categoria])
+  orden        compra[]
 }
 
 model compra {
-  id_item      Int @id @default(autoincrement()) //esto es porque la db me obliga a tener un Id
-  orden_compra Int //podria ser string si se quisiera
+  id_item      Int      @id @default(autoincrement()) //esto es porque la db me obliga a tener un Id
+  numero_orden Int //podria ser string si se quisiera
   id_usuario   Int
   id_producto  Int
   stock        Int
-  //precio
+  precio       Float
+  usuario      usuario  @relation(fields: [id_usuario], references: [id_usuario])
+  producto     producto @relation(fields: [id_producto], references: [id_producto])
+}
+
+model orden {
+  id_orden     Int     @id @default(autoincrement())
+  id_usuario   Int
+  numero_orden Int
+  precio_final Float
+  fecha        String
+  usuario      usuario @relation(fields: [id_usuario], references: [id_usuario])
 }

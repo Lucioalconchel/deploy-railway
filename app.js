@@ -29,3 +29,23 @@ app.listen(PORT,()=>{
 app.get('/', (req,res)=>{
     res.render('home');
 })
+//=========================================================
+// app.get('/comentarios', async(req,res)=>{
+//     const comentarios = await prisma.categoria.findMany();
+//     res.render('showComentarios',{comentarios:comentarios})
+// })
+// app.get('/nuevoComentario', async (req,res)=>{
+//     const usuarios = await prisma.usuario.findMany();
+//     res.render('newComentario',{usuarios:usuarios});
+// })
+// app.post('/nuevoComentario', async(req,res)=>{
+//     const {usuarios} = req.body;
+//     const {descripcion} = req.body;
+//     await prisma.comentario.create({
+//         data:{
+//             id_usuario:usuarios,
+//             descripcion:descripcion
+//         }
+//     })
+//     res.redirect('/')
+// })
