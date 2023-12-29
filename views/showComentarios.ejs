@@ -12,19 +12,25 @@
     <a href="#" id="NuevoProducto">Nuevo Producto || </a>
     <a href="#" id="Productos">Productos || </a>
     <a href="#" id="NuevaCategoria">Nueva categoria || </a>
-    <a href="#" id="Categorias">Categorias</a> <br>
+    <a href="#" id="Categorias">Categorias || </a>
+    <a href="#" id="NuevoComentario">Nuevo Comentario || </a>
+    <a href="#" id="Comentarios">Comentarios</a> <br>
 </navbar>
 <body>
     <h1>Comentarios</h1>
-    <% for (var i = 0; i < comentarios.length ; i++) { %>
-        <ul>
-            <ol>
-                <%=(i+1)%>° <%= comentarios[i].id_usuario %> || <%=comentarios[i].descripcion%>
-                <button class="borrarProducto" id=<%= comentarios[i].id_comentario %> >Eliminar</button>
-                <button class="editarProducto" id=<%= comentarios[i].id_comentario %> >Editar</button>
-            </ol>
-        </ul>
+    <% for(var j=0; j< usuarios.length; j++) { %>
+        <% for (var i = 0; i < comentarios.length ; i++) { %>
+            <% if (usuarios[j].id_usuario === comentarios[i].id_usuario) { %>
+                <ul>
+                    <ol>
+                        <%=(i+1)%>° <%= usuarios[j].email %> : <%=comentarios[i].descripcion%>
+                        <button class="borrarComentario" id=<%= comentarios[i].id_comentario %> >Eliminar</button>
+                        <button class="editarComentario" id=<%= comentarios[i].id_comentario %> >Editar</button>
+                    </ol>
+                </ul>
+            <% } %>
         <% } %>
+    <% } %>
 </body>
 <script src="../funciones.js"></script>
 </html>

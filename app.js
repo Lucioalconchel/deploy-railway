@@ -4,6 +4,7 @@ import {PrismaClient} from '@prisma/client';
 import categoriaRouter from "./routes/categoria.js";
 import productoRouter from './routes/producto.js'
 import usuarioRouter from './routes/usuario.js'
+import comentarioRouter from "./routes/comentario.js";
 //=========================================================
 const prisma = new PrismaClient();
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static('./src'));
 app.use(categoriaRouter);
 app.use(productoRouter)
 app.use(usuarioRouter);
+app.use(comentarioRouter)
 //=========================================================
 app.listen(PORT,()=>{
     console.log(`Escuchando en el puerto ${PORT}`);
@@ -30,22 +32,4 @@ app.get('/', (req,res)=>{
     res.render('home');
 })
 //=========================================================
-// app.get('/comentarios', async(req,res)=>{
-//     const comentarios = await prisma.categoria.findMany();
-//     res.render('showComentarios',{comentarios:comentarios})
-// })
-// app.get('/nuevoComentario', async (req,res)=>{
-//     const usuarios = await prisma.usuario.findMany();
-//     res.render('newComentario',{usuarios:usuarios});
-// })
-// app.post('/nuevoComentario', async(req,res)=>{
-//     const {usuarios} = req.body;
-//     const {descripcion} = req.body;
-//     await prisma.comentario.create({
-//         data:{
-//             id_usuario:usuarios,
-//             descripcion:descripcion
-//         }
-//     })
-//     res.redirect('/')
-// })
+

@@ -12,19 +12,32 @@
     <a href="#" id="NuevoProducto">Nuevo Producto || </a>
     <a href="#" id="Productos">Productos || </a>
     <a href="#" id="NuevaCategoria">Nueva categoria || </a>
-    <a href="#" id="Categorias">Categorias</a>
+    <a href="#" id="Categorias">Categorias || </a>
+    <a href="#" id="NuevoComentario">Nuevo Comentario || </a>
+    <a href="#" id="Comentarios">Comentarios</a> <br>
 </navbar>
 <body>
-    <form action='/nuevoComentario' method="POST">
-        <label for="">Usuarios</label>
-        <select name="usuario">
-            <% for (var i =0; i< usuarios.length; i++ ) { %>
-                <option value= <%= usuarios[i].id_usuario %> > <%= usuarios[i].email %> </option>
-            <% }%>
-        </select>
-        <input type="text" name="descripcion" placeholder="comentario">
-        <input type="submit" value="Enviar">
-   </form>
+    <% if (comentario !== null)  { %>
+        <h1>Editar Comentario</h1>
+        <form action='/editarComentario' method="POST">
+            <input type="hidden" name="id_comentario" value=<%= comentario.id_comentario %>>
+            <input type="text" name="descripcion" value=<%= comentario.descripcion %>>
+            <input type="submit" value="Enviar">
+       </form>
+        <% } else { %>
+            <h1>Nuevo Comentario</h1>
+            <form action='/nuevoComentario' method="POST">
+                <label for="">Usuarios</label>
+                <select name="usuario">
+                    <% for (var i =0; i< usuarios.length; i++ ) { %>
+                        <option value= <%= usuarios[i].id_usuario %> > <%= usuarios[i].email %> </option>
+                    <% }%>
+                </select>
+                <input type="text" name="descripcion" placeholder="comentario">
+                <input type="submit" value="Enviar">
+           </form>
+            <% } %>
+   
 </body>
 <script src="../funciones.js"></script>
 </html>
